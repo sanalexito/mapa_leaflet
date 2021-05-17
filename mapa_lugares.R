@@ -4,15 +4,9 @@ library(leaflet)
 
 #r_colors <- rgb(t(col2rgb(colors()) / 255))
 #names(r_colors) <- colors()
+lat <-c(19.30652113783788,19.304313767904436); lon <- c(-99.06530588915952,-99.05964106404954)
+coordenadas <- data.frame(lat,lon) %>% mutate(Estacion = c("Tezonco","Olivos"))
 
-lat <-c(19.304860093466836,19.299918733521913); lon <- c(-99.05948580235719,-99.04639662312582)
-coordenadas <- data.frame(lat,lon) %>% mutate(Estacion = c("Nopalera","Olivos"))
-
-# 
-# ui <- fluidPage(
-#   leafletOutput("mymap"),
-#   selectInput("Cords","bla",choices = coordenadas)
-# )
 ui <- fluidPage(    
   leafletOutput("mymap"),
   # Give the page a title
@@ -26,8 +20,8 @@ ui <- fluidPage(
       
       checkboxGroupInput(inputId = "estacion",
                            label = "Estación:",
-                         choices = c("Olivos" = coordenadas[1,3], 
-                                     "Nopalera" = coordenadas[2,3]),
+                         choices = c("Tezonco" = coordenadas[1,3], 
+                                     "Olivos" = coordenadas[2,3]),
                                     
                          selected =  coordenadas[1,3]),
       hr(),
